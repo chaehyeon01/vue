@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <!-- <app-content></app-content> -->
+        <app-footer></app-footer>
+    </div>
+    <div id="app2">
+        <app-header></app-header>
+        <app-footer></app-footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // Vue.component('컴포넌트 이름',컴포넌트 내용); >>전역 컴퍼넌트
+        Vue.component('app-header',{
+            template:'<h1>Header</h1>'
+        });
+        // Vue.component('app-content',{
+        //     template:'<div>content</div>'
+        // });
+
+        new Vue({
+            el:'#app',
+            // 지역컴포넌트 등록 방식
+            components:{
+                'app-footer': {
+                    // '컴포넌트 이름' , 컴포넌트 내용
+                    template:'<footer>footer</footer>'
+                }
+            },
+        });
+        //지역 vs 전역 차이?
+        //지역컴포넌트는 하단의 어떤 컴포넌트가 등록해 져있는지 알수 있음.
+        //전역 컴포넌트를 쓰는 경우에는 플러그인 이나 라리브러리 형태로 전역으로 사용할때 
+
+        //지역 컴포넌트는 인스턴스를 생성할때마다 생성해줘야한다. 반대로 지역 컴포넌트는 따로 인스턴스를
+        // 생성을 안해도 똑같이 쓸 수 있다.
+        new Vue({
+            el:'#app2',
+            components:{
+                'app-footer': {
+                    // '컴포넌트 이름' , 컴포넌트 내용
+                    template:'<footer>footer</footer>'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
