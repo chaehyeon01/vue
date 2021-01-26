@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .text-blue {
+        color: blue;
+    }
+</style>
+<body>
+    <div id="app">
+        <p v-bind:id="uuid" v-bind:class="cname" >{{number}}</p>
+        <p>{{duboleNum}}</p>
+        <!-- v-if와 v-show 차이점 -->
+        <!-- 
+            v-if는 특정조건에서  dom이 아애 사라지게 할수 있고
+            v-show는 특정조건에서 dom을 그냥 css로 hide시키는것 
+         -->
+        <div v-if="loading">
+            Loading...
+        </div>
+        <div v-else>
+            test user has been logged in
+        </div>
+        <div v-show="loading">
+            Loading...
+        </div>
+        <!-- TODO : 인풋 박스를 만들고 입력된 값을 p태그에 출력해보세요. -->
+        <textarea v-model="inputval" ></textarea>
+        <p>{{inputval}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                number:10,
+                uuid:'abc1234',
+                cname:'text-blue',
+                loading:true,
+                inputval:'',
+            },
+            computed: {
+                duboleNum:function() {
+                    return this.number * 2;
+                } 
+            },
+          
+        });
+    </script>
+</body>
+</html>
