@@ -22,7 +22,7 @@ export default {
   methods:{
     addOneItem:function(todoItem){
        //하위 컴포넌트에서 발생한 이벤트에서 todoItem을 받아옴. 
-        var obj={completed:false, item:todoItem};
+        const obj={completed:false, item:todoItem};
         //로컬스토리지 저장 
         localStorage.setItem(todoItem,JSON.stringify(obj));
         this.todoItems.push(obj);
@@ -46,9 +46,9 @@ export default {
   },
   created:function (){
     if(localStorage.length>0){
-      for(var i=0; i <localStorage.length; i++){
+      for(let i=0; i <localStorage.length; i++){
         if(localStorage.key(i) !== 'loglevel:webpack-dev-server' && localStorage.key(i) !=='randid' ){
-         var data=JSON.parse(localStorage.getItem(localStorage.key(i)));
+         let data=JSON.parse(localStorage.getItem(localStorage.key(i)));
          console.log(data);
           this.todoItems.push(data);
         }
